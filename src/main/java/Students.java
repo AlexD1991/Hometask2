@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -7,12 +6,11 @@ import java.util.List;
  * Created by aleksey.dobrovolsky on 6/2/2019.
  */
 public class Students {
-//    private static List<Student> students = new ArrayList<Student>();
 
     public static void main(String[] args) {
         List<Student> students = init();
         resultList(sortByAge(students));
-        resultList(students);
+        resultList(filterByLastName(students, "J"));
     }
 
     private static List<Student> init() {
@@ -38,5 +36,13 @@ public class Students {
             System.out.println(String.format("%s\t%s\t%s\t%s",
                     st.getId(), st.getFirstName(), st.getLastName(), st.getAge()));
         }
+    }
+
+    private static List<Student> filterByLastName(List<Student> list, String letter) {
+        ArrayList<Student> result = new ArrayList<Student>();
+        for (Student st: list){
+            if (st.getLastName().startsWith(letter)) result.add(st);
+        }
+        return result;
     }
 }
