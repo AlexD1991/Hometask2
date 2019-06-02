@@ -1,6 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
@@ -12,6 +11,7 @@ public class Students {
         resultList(sortByAge(students));
         resultList(filterByLastName(students, "J"));
         System.out.println(getAverageAge(students));
+        System.out.println(convertToMap(students));
     }
 
     private static List<Student> init() {
@@ -54,4 +54,18 @@ public class Students {
         }
         return result / list.size();
     }
+
+    private static Map<Integer, String> convertToMapLambda(List<Student> list) {
+        return list.stream().collect(
+                Collectors.toMap(Student::getId, x -> x.getFirstName() + " " + x.getLastName() + " " + x.getAge()));
+    }
+
+    private static Map<Integer, String> convertToMap(List<Student> list) {
+        Map<Integer, String> map = new HashMap<>();
+        for (Student st : list) {
+            map.put(st.getId(), st.getFirstName() + " " + st.getLastName() + " " + st.getAge());
+        }
+        return map;
+    }
+
 }
