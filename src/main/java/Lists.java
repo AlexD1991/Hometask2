@@ -24,12 +24,14 @@ public class Lists {
         fillList(linkedList);
     }
 
-    private static void displayResult (long arrayListResult, long linkedListResult, String header){
+    private static void displayResult(long arrayListResult, long linkedListResult, String header) {
         System.out.println(header);
         System.out.println(String.format("Result of ArrayList - %s ms", arrayListResult));
         System.out.println(String.format("Result of LinkedList - %s ms", linkedListResult));
-        if (arrayListResult > linkedListResult) System.out.println(String.format("LinkedList operation is faster then ArrayList one on %s ms\n", arrayListResult - linkedListResult));
-        else System.out.println(String.format("ArrayList operation is faster then LinkedList one on %s ms\n", linkedListResult - arrayListResult));
+        if (arrayListResult > linkedListResult)
+            System.out.println(String.format("LinkedList operation is faster then ArrayList one on %s ms\n", arrayListResult - linkedListResult));
+        else
+            System.out.println(String.format("ArrayList operation is faster then LinkedList one on %s ms\n", linkedListResult - arrayListResult));
     }
 
     private static long getTimeAdd(List<Integer> list) {
