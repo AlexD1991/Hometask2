@@ -6,12 +6,12 @@ import java.util.List;
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
  */
-public class Lists {
+class Lists {
 
     private static ArrayList<Integer> arrayList = new ArrayList<Integer>();
     private static LinkedList<Integer> linkedList = new LinkedList<Integer>();
 
-    public static void compare() {
+    static void compare() {
         init();
         int elementToSearch = arrayList.get(5000000);
         displayResult(getTimeAdd(arrayList), getTimeAdd(linkedList), "Add elements");
