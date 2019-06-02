@@ -12,6 +12,7 @@ public class Students {
         resultList(filterByLastName(students, "J"));
         System.out.println(getAverageAge(students));
         System.out.println(convertToMap(students));
+        System.out.println(filterById(convertToMap(students)));
     }
 
     private static List<Student> init() {
@@ -19,9 +20,10 @@ public class Students {
         String[] firstNames = {"Olivia", "Amelia", "Isla", "Emily", "Ava", "Oliver", "Harry", "Jack", "George", "Noah"};
         String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
         int[] ages = {18, 20, 21, 22, 18, 18, 19, 23, 23, 20};
+        int[] ids = {96, 97, 98, 99, 100, 101, 102, 103, 104, 105};
 
         for (int i = 0; i < 10; i++) {
-            students.add(new Student(firstNames[i], lastNames[i], i, ages[i]));
+            students.add(new Student(firstNames[i], lastNames[i], ids[i], ages[i]));
         }
         return students;
     }
@@ -66,6 +68,14 @@ public class Students {
             map.put(st.getId(), st.getFirstName() + " " + st.getLastName() + " " + st.getAge());
         }
         return map;
+    }
+
+    private static Map<Integer, String> filterById(Map<Integer, String> map) {
+        Map<Integer, String> resultMap = new HashMap<>();
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            if (entry.getKey() > 100) resultMap.put(entry.getKey(), entry.getValue());
+        }
+        return resultMap;
     }
 
 }
