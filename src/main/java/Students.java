@@ -11,6 +11,7 @@ public class Students {
         List<Student> students = init();
         resultList(sortByAge(students));
         resultList(filterByLastName(students, "J"));
+        System.out.println(getAverageAge(students));
     }
 
     private static List<Student> init() {
@@ -40,9 +41,17 @@ public class Students {
 
     private static List<Student> filterByLastName(List<Student> list, String letter) {
         ArrayList<Student> result = new ArrayList<Student>();
-        for (Student st: list){
+        for (Student st : list) {
             if (st.getLastName().startsWith(letter)) result.add(st);
         }
         return result;
+    }
+
+    private static double getAverageAge(List<Student> list) {
+        double result = 0;
+        for (Student st : list) {
+            result += st.getAge();
+        }
+        return result / list.size();
     }
 }
