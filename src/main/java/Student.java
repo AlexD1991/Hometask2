@@ -9,14 +9,14 @@ public class Student {
     private String firstName, lastName;
     private int id, age;
 
-    public Student(String firstName, String lastName, int id, int age){
+    Student(String firstName, String lastName, int id, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.id = id;
     }
 
-    public String getFirstName() {
+    String getFirstName() {
         return firstName;
     }
 
@@ -24,7 +24,7 @@ public class Student {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    String getLastName() {
         return lastName;
     }
 
@@ -32,7 +32,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public int getId() {
+    int getId() {
         return id;
     }
 
@@ -40,7 +40,7 @@ public class Student {
         this.id = id;
     }
 
-    public int getAge() {
+    int getAge() {
         return age;
     }
 
@@ -48,12 +48,13 @@ public class Student {
         this.age = age;
     }
 
-    public static Comparator<Student> ageComparator = new Comparator<Student>() {
+    static Comparator<Student> ageComparator = new Comparator<Student>() {
 
         public int compare(Student s1, Student s2) {
             int ageStudent1 = s1.getAge();
             int ageStudent2 = s2.getAge();
 
             return ageStudent1 - ageStudent2;
-        }};
+        }
+    };
 }
