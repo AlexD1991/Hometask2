@@ -1,7 +1,9 @@
+package model;
+
 /**
  * Created by aleksey.dobrovolsky on 6/9/2019.
  */
-public class RateInternetMax extends RateOnlyInternet{
+public class RateInternetMax extends RateOnlyInternet {
 
     public RateInternetMax(){
         this.setClientCount(200);

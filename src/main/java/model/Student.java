@@ -1,6 +1,6 @@
+package model;
+
 import java.util.Comparator;
-import java.util.StringTokenizer;
-import java.util.TreeMap;
 
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
@@ -9,14 +9,14 @@ public class Student {
     private String firstName, lastName;
     private int id, age;
 
-    Student(String firstName, String lastName, int id, int age) {
+    public Student(String firstName, String lastName, int id, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.id = id;
     }
 
-    String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -24,7 +24,7 @@ public class Student {
         this.firstName = firstName;
     }
 
-    String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
@@ -32,7 +32,7 @@ public class Student {
         this.lastName = lastName;
     }
 
-    int getId() {
+    public int getId() {
         return id;
     }
 
@@ -40,7 +40,7 @@ public class Student {
         this.id = id;
     }
 
-    int getAge() {
+    public int getAge() {
         return age;
     }
 
@@ -48,7 +48,7 @@ public class Student {
         this.age = age;
     }
 
-    static Comparator<Student> ageComparator = new Comparator<Student>() {
+    public static Comparator<Student> ageComparator = new Comparator<Student>() {
 
         public int compare(Student s1, Student s2) {
             int ageStudent1 = s1.getAge();

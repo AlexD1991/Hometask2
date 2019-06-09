@@ -1,3 +1,5 @@
+package model;
+
 import java.util.Comparator;
 
 /**
@@ -69,5 +71,5 @@ public class Rate {
         this.clientCount = clientCount;
     }
 
-    static Comparator<Rate> subscriptionFeeComparator = (o1, o2) -> (int) (o1.getSubscriptionFee() - o2.getSubscriptionFee());
+    public static Comparator<Rate> subscriptionFeeComparator = (o1, o2) -> (int) (o1.getSubscriptionFee() - o2.getSubscriptionFee());
 }

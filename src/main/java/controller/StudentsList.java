@@ -1,12 +1,18 @@
+package controller;
+
+import model.Student;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by aleksey.dobrovolsky on 6/3/2019.
  */
-class StudentsList {
+public class StudentsList {
 
-    static List<Student> students = init();
+    public static List<Student> students = init();
+
+
 
     private static List<Student> init() {
         List<Student> students = new ArrayList<Student>();
@@ -21,7 +27,7 @@ class StudentsList {
         return students;
     }
 
-    static void resultList(List<Student> list) {
+    public static void resultList(List<Student> list) {
         System.out.println("id\tfirst name\tlast name\tage");
         for (Student st : list) {
             System.out.println(String.format("%s\t%s\t%s\t%s",

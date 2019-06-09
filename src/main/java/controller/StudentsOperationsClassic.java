@@ -1,13 +1,17 @@
+package controller;
+
+import model.Student;
+
 import java.util.*;
 
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
  */
-class StudentsOperationsClassic {
+public class StudentsOperationsClassic {
 
     static List<Student> students = StudentsList.students;
 
-    static void run() {
+    public static void run() {
         System.out.println("\nInitial list:");
         StudentsList.resultList(students);
 

@@ -1,7 +1,11 @@
+package model;
+
+import model.Rate;
+
 /**
  * Created by aleksey.dobrovolsky on 6/9/2019.
  */
-public class RateUltra extends Rate{
+public class RateUltra extends Rate {
 
     public RateUltra(){
         this.setClientCount(525);
