@@ -7,7 +7,7 @@ import model.Rate;
  */
 public class Rate4G extends Rate {
 
-    public Rate4G(){
+    public Rate4G() {
         this.setClientCount(120);
         this.setMbCost(0.7);
         this.setMbPerMonth(100);

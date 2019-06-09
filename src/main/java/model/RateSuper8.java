@@ -9,7 +9,7 @@ public class RateSuper8 extends Rate {
 
     private int discount = 15;
 
-    public RateSuper8(){
+    public RateSuper8() {
         this.setClientCount(2500);
         this.setMbCost(0.9);
         this.setMbPerMonth(200);
@@ -19,7 +19,7 @@ public class RateSuper8 extends Rate {
         this.setMinPerMonth(1000);
     }
 
-    public double getSubscriptionFee(){
+    public double getSubscriptionFee() {
         return super.getSubscriptionFee() * (100 - discount) / 100;
     }
 }

@@ -5,7 +5,7 @@ package model;
  */
 public class RateInternetMax extends RateOnlyInternet {
 
-    public RateInternetMax(){
+    public RateInternetMax() {
         this.setClientCount(200);
         this.setMbCost(0.1);
         this.setMbPerMonth(20000);

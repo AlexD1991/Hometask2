@@ -7,7 +7,7 @@ import model.Rate;
  */
 class RateOnlyInternet extends Rate {
 
-    RateOnlyInternet(){
+    RateOnlyInternet() {
         this.setMinPerMonth(0);
         this.setMinCost(999999);
     }

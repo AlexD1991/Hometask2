@@ -5,7 +5,7 @@ package model;
  */
 public class RateInternetMin extends RateOnlyInternet {
 
-    public RateInternetMin(){
+    public RateInternetMin() {
         this.setClientCount(300);
         this.setMbCost(0.05);
         this.setMbPerMonth(500);

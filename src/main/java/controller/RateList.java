@@ -14,7 +14,7 @@ public class RateList {
     private static ArrayList<Rate> rateList = createRateList();
     private static DecimalFormat df2 = new DecimalFormat("#.##");
 
-    public static void run(){
+    public static void run() {
         System.out.println("Initial list of rates:");
         controller.RateList.printList(rateList);
 
@@ -76,7 +76,7 @@ public class RateList {
                                           double minMinPerMonth,
                                           double maxMbCost,
                                           double maxMinCost) {
-         return new ArrayList<Rate>(list.stream().filter((x) -> x.getMbPerMonth() >= minMbPerMonth
+        return new ArrayList<Rate>(list.stream().filter((x) -> x.getMbPerMonth() >= minMbPerMonth
                 && x.getMinPerMonth() >= minMinPerMonth
                 && x.getSubscriptionFee() <= maxSubscriptionFee
                 && x.getMbCost() <= maxMbCost

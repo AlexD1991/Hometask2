@@ -7,7 +7,7 @@ import model.Rate;
  */
 public class RateUltra extends Rate {
 
-    public RateUltra(){
+    public RateUltra() {
         this.setClientCount(525);
         this.setMbCost(1);
         this.setMbPerMonth(500);
