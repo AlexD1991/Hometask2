@@ -18,7 +18,7 @@ public class Lists {
         int elementToSearch = arrayList.get(5000000);
         displayResult(getTimeAdd(arrayList), getTimeAdd(linkedList), "Add elements");
         displayResult(getTimeRemove(arrayList), getTimeRemove(linkedList), "Remove elements");
-        displayResult(getTimeSearch(arrayList, elementToSearch), getTimeSearch(linkedList, elementToSearch), "Search elements");
+        displayResult(getTimeSearch(arrayList, elementToSearch), getTimeSearch(linkedList, elementToSearch), "Search elements (100)");
     }
 
     private static void init() {
@@ -50,7 +50,7 @@ public class Lists {
 
     private static long getTimeSearch(List<Integer> list, int elementToSearch) {
         long startTime = System.currentTimeMillis();
-        searchElementsSomeTimes(list, 1000, elementToSearch);
+        searchElementsSomeTimes(list, 100, elementToSearch);
         return System.currentTimeMillis() - startTime;
     }
 
