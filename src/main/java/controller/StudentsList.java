@@ -8,11 +8,9 @@ import java.util.List;
 /**
  * Created by aleksey.dobrovolsky on 6/3/2019.
  */
-public class StudentsList {
+class StudentsList {
 
-    public static List<Student> students = init();
-
-
+    static List<Student> students = init();
 
     private static List<Student> init() {
         List<Student> students = new ArrayList<Student>();
@@ -27,7 +25,7 @@ public class StudentsList {
         return students;
     }
 
-    public static void resultList(List<Student> list) {
+    static void resultList(List<Student> list) {
         System.out.println("id\tfirst name\tlast name\tage");
         for (Student st : list) {
             System.out.println(String.format("%s\t%s\t%s\t%s",

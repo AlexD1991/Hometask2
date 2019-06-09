@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class StudentsOperationsClassic {
 
-    static List<Student> students = StudentsList.students;
+    private static List<Student> students = StudentsList.students;
 
     public static void run() {
         System.out.println("\nInitial list:");
@@ -33,12 +33,12 @@ public class StudentsOperationsClassic {
         System.out.println(StudentsOperationsClassic.filterMapById(StudentsOperationsClassic.convertToMap(StudentsOperationsClassic.students)));
     }
 
-    static List<Student> sortByAge(List<Student> list) {
+    private static List<Student> sortByAge(List<Student> list) {
         list.sort(Student.ageComparator);
         return list;
     }
 
-    static List<Student> filterByLastName(List<Student> list, String letter) {
+    private static List<Student> filterByLastName(List<Student> list, String letter) {
         ArrayList<Student> result = new ArrayList<>();
         for (Student st : list) {
             if (st.getLastName().startsWith(letter)) result.add(st);
@@ -46,7 +46,7 @@ public class StudentsOperationsClassic {
         return result;
     }
 
-    static double getAverageAge(List<Student> list) {
+    private static double getAverageAge(List<Student> list) {
         double result = 0;
         for (Student st : list) {
             result += st.getAge();
@@ -54,7 +54,7 @@ public class StudentsOperationsClassic {
         return result / list.size();
     }
 
-    static Map<Integer, String> convertToMap(List<Student> list) {
+    private static Map<Integer, String> convertToMap(List<Student> list) {
         Map<Integer, String> map = new HashMap<>();
         for (Student st : list) {
             map.put(st.getId(), st.getFirstName() + " " + st.getLastName() + " " + st.getAge());
@@ -62,7 +62,7 @@ public class StudentsOperationsClassic {
         return map;
     }
 
-    static Map<Integer, String> filterMapById(Map<Integer, String> map) {
+    private static Map<Integer, String> filterMapById(Map<Integer, String> map) {
         Map<Integer, String> resultMap = new HashMap<>();
         for (Map.Entry<Integer, String> entry : map.entrySet()) {
             if (entry.getKey() > 100) resultMap.put(entry.getKey(), entry.getValue());

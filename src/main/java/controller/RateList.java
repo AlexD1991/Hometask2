@@ -29,10 +29,6 @@ public class RateList {
         return rateList;
     }
 
-    public void setRateList(ArrayList<Rate> rateList) {
-        this.rateList = rateList;
-    }
-
     private static ArrayList<Rate> createRateList() {
         ArrayList<Rate> list = new ArrayList<>();
         list.add(new Rate4G());
@@ -48,7 +44,7 @@ public class RateList {
         return rateList.stream().mapToInt(Rate::getClientCount).sum();
     }
 
-    public static void printList(ArrayList<Rate> list) {
+    private static void printList(ArrayList<Rate> list) {
         System.out.println(String.format("\n%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s",
                 "Rate name",
                 "Subscription",
@@ -69,17 +65,17 @@ public class RateList {
         }
     }
 
-    public static ArrayList<Rate> sortBySubscriptionFee(ArrayList<Rate> list) {
+    private static ArrayList<Rate> sortBySubscriptionFee(ArrayList<Rate> list) {
         list.sort(Rate.subscriptionFeeComparator);
         return list;
     }
 
-    public static ArrayList<Rate> filter(ArrayList<Rate> list,
-                                         double maxSubscriptionFee,
-                                         double minMbPerMonth,
-                                         double minMinPerMonth,
-                                         double maxMbCost,
-                                         double maxMinCost) {
+    private static ArrayList<Rate> filter(ArrayList<Rate> list,
+                                          double maxSubscriptionFee,
+                                          double minMbPerMonth,
+                                          double minMinPerMonth,
+                                          double maxMbCost,
+                                          double maxMinCost) {
          return new ArrayList<Rate>(list.stream().filter((x) -> x.getMbPerMonth() >= minMbPerMonth
                 && x.getMinPerMonth() >= minMinPerMonth
                 && x.getSubscriptionFee() <= maxSubscriptionFee

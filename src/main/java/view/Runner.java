@@ -14,7 +14,7 @@ public class Runner {
 
     public static void main(String args[]) {
 
-        System.out.println("Task 3 - Mobile rates hierarchy:");
+        System.out.println("Task 1 - Mobile rates hierarchy:");
         RateList.run();
 
         System.out.println("Task 2 - Operations with collection:");

@@ -19,7 +19,7 @@ public class Rate {
         return rateName;
     }
 
-    public void setRateName(String rateName) {
+    void setRateName(String rateName) {
         this.rateName = rateName;
     }
 
@@ -27,7 +27,7 @@ public class Rate {
         return mbPerMonth;
     }
 
-    public void setMbPerMonth(double mbPerMonth) {
+    void setMbPerMonth(double mbPerMonth) {
         this.mbPerMonth = mbPerMonth;
     }
 
@@ -35,7 +35,7 @@ public class Rate {
         return minPerMonth;
     }
 
-    public void setMinPerMonth(double minPerMonth) {
+    void setMinPerMonth(double minPerMonth) {
         this.minPerMonth = minPerMonth;
     }
 
@@ -43,7 +43,7 @@ public class Rate {
         return subscriptionFee;
     }
 
-    public void setSubscriptionFee(double subscriptionFee) {
+    void setSubscriptionFee(double subscriptionFee) {
         this.subscriptionFee = subscriptionFee;
     }
 
@@ -51,7 +51,7 @@ public class Rate {
         return mbCost;
     }
 
-    public void setMbCost(double mbCost) {
+    void setMbCost(double mbCost) {
         this.mbCost = mbCost;
     }
 
@@ -59,7 +59,7 @@ public class Rate {
         return minCost;
     }
 
-    public void setMinCost(double minCost) {
+    void setMinCost(double minCost) {
         this.minCost = minCost;
     }
 
@@ -67,7 +67,7 @@ public class Rate {
         return clientCount;
     }
 
-    public void setClientCount(int clientCount) {
+    void setClientCount(int clientCount) {
         this.clientCount = clientCount;
     }
 
