@@ -1,0 +1,5 @@
+maxSubscriptionFee=20
+minMbPerMonth=100
+minMinPerMonth=500
+maxMbCost=
+maxMinCost=0.07

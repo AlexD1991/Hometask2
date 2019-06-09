@@ -6,8 +6,12 @@ import controller.StudentsOperationsClassic;
 import controller.StudentsOperationsStream;
 import model.Rate;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Properties;
 import java.util.Scanner;
 
 /**
@@ -15,7 +19,7 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
 
         Scanner in = new Scanner(System.in);
         String input;

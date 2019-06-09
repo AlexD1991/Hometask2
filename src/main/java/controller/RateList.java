@@ -2,8 +2,12 @@ package controller;
 
 import model.*;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.stream.Collectors;
 
 /**
@@ -13,8 +17,13 @@ public class RateList {
 
     private static ArrayList<Rate> rateList = createRateList();
     private static DecimalFormat df2 = new DecimalFormat("#.##");
+    private static Properties p = new Properties();
 
-    public static void run() {
+    private static FileReader readProperties() throws FileNotFoundException {
+        return new FileReader(System.getProperty("user.dir") + "/src/main/resources/rateFilterData");
+    }
+
+    public static void run() throws IOException {
         System.out.println("Initial list of rates:");
         controller.RateList.printList(rateList);
 
@@ -22,7 +31,7 @@ public class RateList {
         controller.RateList.printList(controller.RateList.sortBySubscriptionFee(rateList));
 
         System.out.println("\nFiltered by the specified condition rate list:");
-        controller.RateList.printList(controller.RateList.filter(rateList, 20, 100, 500, 0.8, 0.05));
+        controller.RateList.printList(controller.RateList.filter(rateList));
     }
 
     public ArrayList<Rate> getRateList() {
@@ -70,12 +79,14 @@ public class RateList {
         return list;
     }
 
-    private static ArrayList<Rate> filter(ArrayList<Rate> list,
-                                          double maxSubscriptionFee,
-                                          double minMbPerMonth,
-                                          double minMinPerMonth,
-                                          double maxMbCost,
-                                          double maxMinCost) {
+    private static ArrayList<Rate> filter(ArrayList<Rate> list) throws IOException {
+        p.load(readProperties());
+        double minMbPerMonth = ((!p.getProperty("minMbPerMonth").isEmpty() ? Double.parseDouble(p.getProperty("minMbPerMonth")) : 0));
+        double minMinPerMonth = ((!p.getProperty("minMinPerMonth").isEmpty() ? Double.parseDouble(p.getProperty("minMinPerMonth")) : 0));
+        double maxSubscriptionFee = ((!p.getProperty("maxSubscriptionFee").isEmpty() ? Double.parseDouble(p.getProperty("maxSubscriptionFee")) : 999999));
+        double maxMbCost = ((!p.getProperty("maxMbCost").isEmpty() ? Double.parseDouble(p.getProperty("maxMbCost")) : 999999));
+        double maxMinCost = ((!p.getProperty("maxMinCost").isEmpty() ? Double.parseDouble(p.getProperty("maxMinCost")) : 999999));
+
         return new ArrayList<Rate>(list.stream().filter((x) -> x.getMbPerMonth() >= minMbPerMonth
                 && x.getMinPerMonth() >= minMinPerMonth
                 && x.getSubscriptionFee() <= maxSubscriptionFee
