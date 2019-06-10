@@ -4,14 +4,9 @@ import controller.Lists;
 import controller.RateList;
 import controller.StudentsOperationsClassic;
 import controller.StudentsOperationsStream;
-import model.Rate;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
-import java.util.Properties;
 import java.util.Scanner;
 
 /**

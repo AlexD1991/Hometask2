@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.function.IntConsumer;
 
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
@@ -16,9 +17,9 @@ public class Lists {
     public static void compare() {
         init();
         int elementToSearch = arrayList.get(5000000);
-        displayResult(getTimeAdd(arrayList), getTimeAdd(linkedList), "Add elements");
-        displayResult(getTimeRemove(arrayList), getTimeRemove(linkedList), "Remove elements");
-        displayResult(getTimeSearch(arrayList, elementToSearch), getTimeSearch(linkedList, elementToSearch), "Search elements (100)");
+        displayResult(getTime(l -> addElementsToList(arrayList, 1000, 123)), getTime(l -> addElementsToList(linkedList, 1000, 123)), "Add elements");
+        displayResult(getTime(l -> removeElements(arrayList, 1000)), getTime(l -> removeElements(linkedList, 1000)), "Remove elements");
+        displayResult(getTime(l -> searchElementsSomeTimes(arrayList, 100, elementToSearch)), getTime(l -> searchElementsSomeTimes(linkedList, 100, elementToSearch)), "Search elements (100)");
     }
 
     private static void init() {
@@ -36,21 +37,9 @@ public class Lists {
             System.out.println(String.format("ArrayList operation is faster then LinkedList one on %s ms\n", linkedListResult - arrayListResult));
     }
 
-    private static long getTimeAdd(List<Integer> list) {
+    private static long getTime(IntConsumer aMethod){
         long startTime = System.currentTimeMillis();
-        addElementsToList(list, 1000, 1);
-        return System.currentTimeMillis() - startTime;
-    }
-
-    private static long getTimeRemove(List<Integer> list) {
-        long startTime = System.currentTimeMillis();
-        removeElements(list, 1000);
-        return System.currentTimeMillis() - startTime;
-    }
-
-    private static long getTimeSearch(List<Integer> list, int elementToSearch) {
-        long startTime = System.currentTimeMillis();
-        searchElementsSomeTimes(list, 100, elementToSearch);
+        aMethod.accept(0);
         return System.currentTimeMillis() - startTime;
     }
 
