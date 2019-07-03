@@ -12,7 +12,7 @@ class StudentsList {
 
     private static List<Student> students = init();
 
-    public static List<Student> getStudents() {
+    static List<Student> getStudents() {
         return students;
     }
 
