@@ -10,13 +10,7 @@ import java.util.List;
  */
 class StudentsList {
 
-    private static List<Student> students = init();
-
     static List<Student> getStudents() {
-        return students;
-    }
-
-    private static List<Student> init() {
         List<Student> students = new ArrayList<Student>();
         String[] firstNames = {"Olivia", "Amelia", "Isla", "Emily", "Ava", "Oliver", "Harry", "Jack", "George", "Noah"};
         String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
