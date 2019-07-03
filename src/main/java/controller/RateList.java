@@ -5,7 +5,6 @@ import model.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.stream.Collectors;
@@ -16,7 +15,6 @@ import java.util.stream.Collectors;
 public class RateList {
 
     private static ArrayList<Rate> rateList = createRateList();
-    private static DecimalFormat df2 = new DecimalFormat("#.##");
     private static Properties p = new Properties();
 
     private static FileReader readProperties() throws FileNotFoundException {
@@ -34,10 +32,6 @@ public class RateList {
         controller.RateList.printList(controller.RateList.filter(rateList));
     }
 
-    public ArrayList<Rate> getRateList() {
-        return rateList;
-    }
-
     private static ArrayList<Rate> createRateList() {
         ArrayList<Rate> list = new ArrayList<>();
         list.add(new Rate4G());
@@ -47,10 +41,6 @@ public class RateList {
         list.add(new RateInternetMin());
         return list;
 
-    }
-
-    public int getClientCount() {
-        return rateList.stream().mapToInt(Rate::getClientCount).sum();
     }
 
     private static void printList(ArrayList<Rate> list) {
@@ -93,6 +83,14 @@ public class RateList {
                 && x.getMbCost() <= maxMbCost
                 && x.getMinCost() <= maxMinCost).collect(Collectors.toList()));
 
+    }
+
+    public ArrayList<Rate> getRateList() {
+        return rateList;
+    }
+
+    public int getClientCount() {
+        return rateList.stream().mapToInt(Rate::getClientCount).sum();
     }
 
 }
