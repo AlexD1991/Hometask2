@@ -4,12 +4,14 @@ import model.Student;
 
 import java.util.*;
 
+import static controller.StudentsList.getStudents;
+
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
  */
 public class StudentsOperationsClassic {
 
-    private static List<Student> students = StudentsList.students;
+    private static List<Student> students = getStudents();
 
     public static void run() {
         System.out.println("\nInitial list:");

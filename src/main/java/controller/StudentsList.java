@@ -10,7 +10,11 @@ import java.util.List;
  */
 class StudentsList {
 
-    static List<Student> students = init();
+    private static List<Student> students = init();
+
+    public static List<Student> getStudents() {
+        return students;
+    }
 
     private static List<Student> init() {
         List<Student> students = new ArrayList<Student>();

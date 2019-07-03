@@ -5,23 +5,25 @@ import model.Student;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static controller.StudentsList.*;
+
 /**
  * Created by aleksey.dobrovolsky on 6/3/2019.
  */
 public class StudentsOperationsStream {
 
-    private static List<Student> students = StudentsList.students;
+    private static List<Student> students = getStudents();
 
     public static void run() {
         System.out.println("\nInitial list:");
-        StudentsList.resultList(students);
+        resultList(students);
 
         System.out.println("\nSorted by age list:");
-        StudentsList.resultList(
+        resultList(
                 StudentsOperationsStream.sortByAgeStream(StudentsOperationsStream.students));
 
         System.out.println("\nOnly students which last name starts with 'J' letter:");
-        StudentsList.resultList(
+        resultList(
                 StudentsOperationsStream.filterByLastNameStream(StudentsOperationsStream.students, "J"));
 
         System.out.println("\nThe average age:");
