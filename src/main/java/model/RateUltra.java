@@ -1,13 +1,11 @@
 package model;
 
-import model.Rate;
-
 /**
  * Created by aleksey.dobrovolsky on 6/9/2019.
  */
-public class RateUltra extends Rate {
+class RateUltra extends Rate {
 
-    public RateUltra() {
+    RateUltra() {
         this.setClientCount(525);
         this.setMbCost(1);
         this.setMbPerMonth(500);

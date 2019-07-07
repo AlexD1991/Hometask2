@@ -1,7 +1,5 @@
 package model;
 
-import model.Rate;
-
 /**
  * Created by aleksey.dobrovolsky on 6/9/2019.
  */
@@ -9,7 +7,7 @@ public class RateSuper8 extends Rate {
 
     private int discount = 15;
 
-    public RateSuper8() {
+    RateSuper8() {
         this.setClientCount(2500);
         this.setMbCost(0.9);
         this.setMbPerMonth(200);
