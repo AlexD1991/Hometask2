@@ -1,6 +1,6 @@
 package view;
 
-import controller.Lists;
+import model.Lists;
 import model.RateListRunner;
 import model.StudentsListRunner;
 
