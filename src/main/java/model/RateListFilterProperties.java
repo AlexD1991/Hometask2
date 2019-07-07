@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * Created by aleksey.dobrovolsky on 7/7/2019.
  */
-public class RateListFilterProperties {
+class RateListFilterProperties {
 
     private static Properties p = new Properties();
     private final String resourceFileName = "rateFilterData";

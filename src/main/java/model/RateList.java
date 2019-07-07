@@ -24,7 +24,7 @@ public class RateList {
         rateList.add(new RateInternetMin());
     }
 
-    public void printList() {
+    void printList() {
         System.out.println(String.format("\n%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s",
                 "Rate name",
                 "Subscription",
@@ -45,7 +45,7 @@ public class RateList {
         }
     }
 
-    public void printListFiltered() {
+    void printListFiltered() {
         System.out.println(String.format("\n%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s\t%-15s",
                 "Rate name",
                 "Subscription",
@@ -92,7 +92,7 @@ public class RateList {
         return rateListFiltered;
     }
 
-    public int getClientCount() {
+    int getClientCount() {
         return rateList.stream().mapToInt(Rate::getClientCount).sum();
     }
 
