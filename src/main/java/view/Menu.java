@@ -2,8 +2,7 @@ package view;
 
 import controller.Lists;
 import controller.RateList;
-import controller.StudentsOperationsClassic;
-import controller.StudentsOperationsStream;
+import model.StudentsListRunner;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -34,10 +33,10 @@ public class Menu {
                         RateList.run();
                         break;
                     case "2":
-                        StudentsOperationsClassic.run();
+                        new StudentsListRunner().runClassic();
                         break;
                     case "3":
-                        StudentsOperationsStream.run();
+                        new StudentsListRunner().runStream();
                         break;
                     case "4":
                         Lists.compare();
