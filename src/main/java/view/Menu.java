@@ -1,7 +1,7 @@
 package view;
 
 import controller.Lists;
-import controller.RateList;
+import model.RateListRunner;
 import model.StudentsListRunner;
 
 import java.io.IOException;
@@ -30,7 +30,7 @@ public class Menu {
 
                 switch (input) {
                     case "1":
-                        RateList.run();
+                        new RateListRunner().run();
                         break;
                     case "2":
                         new StudentsListRunner().runClassic();
