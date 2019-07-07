@@ -84,14 +84,6 @@ public class RateList {
 
     }
 
-    public ArrayList<Rate> getRateList() {
-        return rateList;
-    }
-
-    public ArrayList<Rate> getRateListFiltered() {
-        return rateListFiltered;
-    }
-
     int getClientCount() {
         return rateList.stream().mapToInt(Rate::getClientCount).sum();
     }
