@@ -1,5 +1,7 @@
 package model.students;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,15 +11,16 @@ import java.util.stream.Collectors;
 /**
  * Created by aleksey.dobrovolsky on 6/3/2019.
  */
-class StudentsList {
+public class StudentsList {
 
     private List<Student> studentsList = new ArrayList<>();
     private List<Student> studentsListFiltered = new ArrayList<>();
     private Map<Integer, String> studentsMap = new HashMap<>();
     private Map<Integer, String> studentsMapFiltered = new HashMap<>();
+    private String studentsDataPath = "/studentsData.csv";
 
-    StudentsList() {
-        init();
+    public StudentsList() {
+        initFromFile();
     }
 
     Map<Integer, String> getStudentsMap() {
@@ -28,19 +31,31 @@ class StudentsList {
         return studentsMapFiltered;
     }
 
-    private StudentsList init() {
-        String[] firstNames = {"Olivia", "Amelia", "Isla", "Emily", "Ava", "Oliver", "Harry", "Jack", "George", "Noah"};
-        String[] lastNames = {"Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor"};
-        int[] ages = {18, 20, 21, 22, 18, 18, 19, 23, 23, 20};
-        int[] ids = {96, 97, 98, 99, 100, 101, 102, 103, 104, 105};
-
-        for (int i = 0; i < 10; i++) {
-            studentsList.add(new Student(firstNames[i], lastNames[i], ids[i], ages[i]));
+    private void initFromFile() {
+        String fileData = readFromFile();
+        String[] lines = fileData.split(System.getProperty("line.separator"));
+        for (int i=1; i<lines.length; i++){
+            String[] data = lines[i].split(",");
+            studentsList.add(new Student(data[1], data[2], Integer.parseInt(data[0]), Integer.parseInt(data[3])));
         }
-        return this;
     }
 
-    void printList() {
+    private String readFromFile(){
+        InputStream inputStream = StudentsList.class.getResourceAsStream(studentsDataPath);
+        StringBuilder text = new StringBuilder();
+        int charId;
+
+        try {
+            while ((charId = inputStream.read()) != -1) {
+                text.append((char) charId);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return text.toString();
+    }
+
+    public void printList() {
         System.out.println("id\tfirst name\tlast name\tage");
         for (Student st : studentsList) {
             System.out.println(String.format("%s\t%s\t%s\t%s",
@@ -124,5 +139,9 @@ class StudentsList {
                 .filter(x -> x.getKey() > 100)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         return this;
+    }
+
+    public List<Student> getStudentsList() {
+        return studentsList;
     }
 }
