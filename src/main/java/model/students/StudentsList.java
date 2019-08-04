@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static util.Writer.writeToFile;
+
 /**
  * Created by aleksey.dobrovolsky on 6/3/2019.
  */
@@ -17,9 +19,10 @@ public class StudentsList {
     private List<Student> studentsListFiltered = new ArrayList<>();
     private Map<Integer, String> studentsMap = new HashMap<>();
     private Map<Integer, String> studentsMapFiltered = new HashMap<>();
-    private String studentsDataPath = "/studentsData.csv";
+    private String studentsDataPath = "/studentsInputData.csv";
+    private String studentsOutputPath = "src\\main\\resources\\studentsOutputData.txt";
 
-    public StudentsList() {
+    StudentsList() {
         initFromFile();
     }
 
@@ -33,14 +36,15 @@ public class StudentsList {
 
     private void initFromFile() {
         String fileData = readFromFile();
+
         String[] lines = fileData.split(System.getProperty("line.separator"));
-        for (int i=1; i<lines.length; i++){
+        for (int i = 1; i < lines.length; i++) {
             String[] data = lines[i].split(",");
             studentsList.add(new Student(data[1], data[2], Integer.parseInt(data[0]), Integer.parseInt(data[3])));
         }
     }
 
-    private String readFromFile(){
+    private String readFromFile() {
         InputStream inputStream = StudentsList.class.getResourceAsStream(studentsDataPath);
         StringBuilder text = new StringBuilder();
         int charId;
@@ -56,18 +60,18 @@ public class StudentsList {
     }
 
     public void printList() {
-        System.out.println("id\tfirst name\tlast name\tage");
+        writeToFile("id\tfirst name\tlast name\tage\n", studentsOutputPath);
         for (Student st : studentsList) {
-            System.out.println(String.format("%s\t%s\t%s\t%s",
-                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge()));
+            writeToFile(String.format("%s\t%s\t%s\t%s\n",
+                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge()), studentsOutputPath);
         }
     }
 
     void printFilteredList() {
-        System.out.println("id\tfirst name\tlast name\tage");
+        writeToFile("id\tfirst name\tlast name\tage\n", studentsOutputPath);
         for (Student st : studentsListFiltered) {
-            System.out.println(String.format("%s\t%s\t%s\t%s",
-                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge()));
+            writeToFile(String.format("%s\t%s\t%s\t%s\n",
+                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge()), studentsOutputPath);
         }
     }
 
@@ -143,5 +147,9 @@ public class StudentsList {
 
     public List<Student> getStudentsList() {
         return studentsList;
+    }
+
+    public String getStudentsOutputPath() {
+        return studentsOutputPath;
     }
 }
