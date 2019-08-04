@@ -1,4 +1,4 @@
-package model;
+package model.rates;
 
 /**
  * Created by aleksey.dobrovolsky on 6/9/2019.

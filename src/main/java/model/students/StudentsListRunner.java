@@ -1,4 +1,4 @@
-package model;
+package model.students;
 
 /**
  * Created by aleksey.dobrovolsky on 7/7/2019.

@@ -1,8 +1,6 @@
-package view;
-
-import model.Lists;
-import model.RateListRunner;
-import model.StudentsListRunner;
+import model.lists.Lists;
+import model.rates.RateListRunner;
+import model.students.StudentsListRunner;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -11,7 +9,7 @@ import java.util.Scanner;
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
  */
-public class Menu {
+public class Runner {
 
     public static void main(String args[]) throws IOException {
 

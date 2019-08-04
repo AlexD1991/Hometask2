@@ -1,4 +1,4 @@
-package model;
+package model.rates;
 
 import java.io.IOException;
 
