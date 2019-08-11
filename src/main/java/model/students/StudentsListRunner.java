@@ -1,50 +1,64 @@
 package model.students;
 
+import static util.Writer.clearFile;
+import static util.Writer.writeToFile;
+
 /**
  * Created by aleksey.dobrovolsky on 7/7/2019.
  */
 public class StudentsListRunner {
 
     private StudentsList students = new StudentsList();
+    private String studentsOutputPath = students.getStudentsOutputPath();
 
     public void runClassic() {
-        System.out.println("\nInitial list:");
+
+        clearFile(studentsOutputPath);
+
+        writeToFile("\nInitial list:\n", studentsOutputPath);
         students.printList();
 
-        System.out.println("\nSorted by age list:");
+        writeToFile("\nSorted by age list:\n", studentsOutputPath);
         students.sortByAge().printList();
 
-        System.out.println("\nOnly students which last name starts with 'J' letter:");
+        writeToFile("\nOnly students which last name starts with 'J' letter:\n", studentsOutputPath);
         students.filterByLastName("J").printFilteredList();
 
-        System.out.println("\nThe average age:");
-        System.out.println(students.getAverageAge());
+        writeToFile("\nThe average age:\n", studentsOutputPath);
+        writeToFile(String.valueOf(students.getAverageAge()), studentsOutputPath);
 
-        System.out.println("\nConverted list to HashMap:");
-        System.out.println(students.convertToMap().getStudentsMap());
+        writeToFile("\nConverted list to HashMap:\n", studentsOutputPath);
+        writeToFile(String.valueOf(students.convertToMap().getStudentsMap()), studentsOutputPath);
 
-        System.out.println("\nSet that contains students with id more then 100");
-        System.out.println(students.filterMapById().getStudentsMapFiltered());
+        writeToFile("\nSet that contains students with id more then 100:\n", studentsOutputPath);
+        writeToFile(String.valueOf(students.filterMapById().getStudentsMapFiltered()), studentsOutputPath);
+
+        System.out.println("Results have been added to the file " + studentsOutputPath);
     }
 
     public void runStream() {
-        System.out.println("\nInitial list:");
+
+        clearFile(studentsOutputPath);
+
+        writeToFile("\nInitial list:\n", studentsOutputPath);
         students.printList();
 
-        System.out.println("\nSorted by age list:");
+        writeToFile("\nSorted by age list:\n", studentsOutputPath);
         students.sortByAgeStream().printList();
 
-        System.out.println("\nOnly students which last name starts with 'J' letter:");
+        writeToFile("\nOnly students which last name starts with 'J' letter:\n", studentsOutputPath);
         students.filterByLastNameStream("J").printFilteredList();
 
-        System.out.println("\nThe average age:");
-        System.out.println(students.getAverageAgeStream());
+        writeToFile("\nThe average age:\n", studentsOutputPath);
+        writeToFile(String.valueOf(students.getAverageAgeStream()), studentsOutputPath);
 
-        System.out.println("\nConverted list to HashMap:");
-        System.out.println(students.convertToMapStream().getStudentsMap());
+        writeToFile("\nConverted list to HashMap:\n", studentsOutputPath);
+        writeToFile(String.valueOf(students.convertToMapStream().getStudentsMap()), studentsOutputPath);
 
-        System.out.println("\nSet that contains students with id more then 100");
-        System.out.println(students.filterMapByIdStream().getStudentsMapFiltered());
+        writeToFile("\nSet that contains students with id more then 100\n", studentsOutputPath);
+        writeToFile(String.valueOf(students.filterMapByIdStream().getStudentsMapFiltered()), studentsOutputPath);
+
+        System.out.println("Results have been added to the file " + studentsOutputPath);
     }
 
 

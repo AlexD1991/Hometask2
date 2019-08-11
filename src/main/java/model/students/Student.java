@@ -1,11 +1,19 @@
 package model.students;
 
+import model.exceptions.NotValidEmailException;
+import model.exceptions.NotValidPhoneException;
+
 import java.util.Comparator;
+
+import static util.Validator.isEmailValid;
+import static util.Validator.isPhoneValid;
 
 /**
  * Created by aleksey.dobrovolsky on 6/2/2019.
  */
-public class Student {
+class Student {
+    private String firstName, lastName;
+    private int id, age;
     static Comparator<Student> ageComparator = new Comparator<Student>() {
 
         public int compare(Student s1, Student s2) {
@@ -15,14 +23,11 @@ public class Student {
             return ageStudent1 - ageStudent2;
         }
     };
-    private String firstName, lastName;
-    private int id, age;
+    private String email = "";
+    private String phone = "";
 
-    Student(String firstName, String lastName, int id, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.id = id;
+    String getEmail() {
+        return email;
     }
 
     String getFirstName() {
@@ -39,5 +44,47 @@ public class Student {
 
     int getAge() {
         return age;
+    }
+
+    String getPhone() {
+        return phone;
+    }
+
+    Student withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
+
+    Student withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
+    void withEmail(String email) throws NotValidEmailException {
+        if (isEmailValid(email)) {
+            this.email = email;
+        } else {
+            throw new NotValidEmailException("Email of " + firstName + " " + lastName + " is invalid and cannot be stored.");
+        }
+    }
+
+    void withPhone(String phone) throws NotValidPhoneException {
+        if (isPhoneValid(phone)) {
+            this.phone = phone;
+        } else {
+            throw new NotValidPhoneException("Phone of " + firstName + " " + lastName + " is invalid and cannot be stored.");
+        }
+
+        this.phone = phone;
+    }
+
+    Student withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    Student withAge(int age) {
+        this.age = age;
+        return this;
     }
 }
