@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import static model.rates.RateTypes.*;
+
 /**
  * Created by aleksey.dobrovolsky on 6/9/2019.
  */
@@ -11,17 +13,18 @@ public class RateList {
 
     private static ArrayList<Rate> rateList = new ArrayList<>();
     private static ArrayList<Rate> rateListFiltered = new ArrayList<>();
+    RateFactory factory = new RateFactory();
 
-    RateList(){
+    RateList() {
         createRateList();
     }
 
     private void createRateList() {
-        rateList.add(new Rate4G());
-        rateList.add(new RateSuper8());
-        rateList.add(new RateUltra());
-        rateList.add(new RateInternetMax());
-        rateList.add(new RateInternetMin());
+        rateList.add(factory.getRate(_4G));
+        rateList.add(factory.getRate(INTERNET_MAX));
+        rateList.add(factory.getRate(INTERNET_MIN));
+        rateList.add(factory.getRate(SUPER_8));
+        rateList.add(factory.getRate(ULTRA));
     }
 
     void printList() {
