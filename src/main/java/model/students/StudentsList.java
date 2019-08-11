@@ -1,5 +1,9 @@
 package model.students;
 
+import model.exceptions.NoContactDataException;
+import model.exceptions.NotValidEmailException;
+import model.exceptions.NotValidPhoneException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -8,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static util.Validator.checkContactData;
 import static util.Writer.writeToFile;
 
 /**
@@ -40,7 +45,35 @@ public class StudentsList {
         String[] lines = fileData.split(System.getProperty("line.separator"));
         for (int i = 1; i < lines.length; i++) {
             String[] data = lines[i].split(",");
-            studentsList.add(new Student(data[1], data[2], Integer.parseInt(data[0]), Integer.parseInt(data[3])));
+            String firstName = data[1];
+            String lastName = data[2];
+            String email = data[4];
+            String phone = data[5];
+
+            try {
+                checkContactData(email, phone);
+                Student st = new Student()
+                        .withId(Integer.parseInt(data[0]))
+                        .withFirstName(firstName)
+                        .withLastName(lastName)
+                        .withAge(Integer.parseInt(data[3]));
+                try {
+                    st.withEmail(email);
+                } catch (NotValidEmailException e) {
+                    System.out.println("Email of " + st.getFirstName() + " " + st.getLastName() + " is invalid");
+                    e.printStackTrace();
+                }
+                try {
+                    st.withPhone(phone);
+                } catch (NotValidPhoneException e) {
+                    System.out.println("Phone of " + st.getFirstName() + " " + st.getLastName() + " is invalid");
+                    e.printStackTrace();
+                }
+                studentsList.add(st);
+            } catch (NoContactDataException e) {
+                System.out.println("Contact data of " + firstName + " " + lastName + " is missed or invalid. The student data is not stored!!!");
+                e.printStackTrace();
+            }
         }
     }
 
@@ -59,19 +92,19 @@ public class StudentsList {
         return text.toString();
     }
 
-    public void printList() {
-        writeToFile("id\tfirst name\tlast name\tage\n", studentsOutputPath);
+    void printList() {
+        writeToFile("id\tfirst name\tlast name\tage\temail\tphone\n", studentsOutputPath);
         for (Student st : studentsList) {
-            writeToFile(String.format("%s\t%s\t%s\t%s\n",
-                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge()), studentsOutputPath);
+            writeToFile(String.format("%s\t%s\t%s\t%s\t%s\t%s\n",
+                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge(), st.getEmail(), st.getPhone()), studentsOutputPath);
         }
     }
 
     void printFilteredList() {
-        writeToFile("id\tfirst name\tlast name\tage\n", studentsOutputPath);
+        writeToFile("id\tfirst name\tlast name\tage\temail\tphone\n", studentsOutputPath);
         for (Student st : studentsListFiltered) {
-            writeToFile(String.format("%s\t%s\t%s\t%s\n",
-                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge()), studentsOutputPath);
+            writeToFile(String.format("%s\t%s\t%s\t%s\t%s\t%s\n",
+                    st.getId(), st.getFirstName(), st.getLastName(), st.getAge(), st.getEmail(), st.getPhone()), studentsOutputPath);
         }
     }
 
@@ -149,7 +182,7 @@ public class StudentsList {
         return studentsList;
     }
 
-    public String getStudentsOutputPath() {
+    String getStudentsOutputPath() {
         return studentsOutputPath;
     }
 }
